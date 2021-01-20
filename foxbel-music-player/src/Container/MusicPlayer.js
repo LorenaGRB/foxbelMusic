@@ -3,6 +3,7 @@ import Layout from '../Components/Layout/Layout';
 import Seeker from '../Components/Seeker/Seeker';
 import axios from 'axios';
 import Aux from './../Hoc/Auxiliary';
+import Songs from '../Components/Songs/Songs';
 import foxbelLogo from './../Assets/Imagenes/foxbel-music-white.png';
 
 class MusicPlayer extends Component {
@@ -18,14 +19,11 @@ class MusicPlayer extends Component {
 
 
     handleSubmit(event){
-        // console.log(this.state.wantedWord);
-        let wantedLink = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=album:"${this.state.wantedWord}"`;
-        axios.get(wantedLink)
-            .then(response => {
-                // console.log(response);
-                this.setState({wantedMusicResponse: response.data.data});
-                // console.log(this.state.wantedMusicResponse);
-            });
+        // eslint-disable-next-line
+        DZ.api(`/search?q=track:"${this.state.wantedWord}"`, function (response) { 
+            console.log(response);
+            this.setState({ wantedMusicResponse: response.data })
+        }.bind(this));
         event.preventDefault();
     }
 
@@ -35,14 +33,15 @@ class MusicPlayer extends Component {
     }
 
     render(){
-
-
         const list = this.state.wantedMusicResponse.map(
-            song => {
-                return <div> { song.title } </div>
+            albumData => {
+                return <Songs 
+                    title={albumData.title}
+                    artist={albumData.artist.name}
+                    coverImg={albumData.album.cover_medium}
+                />;
             }
         );
-
         return (
             <Aux>
                 <div>
@@ -50,14 +49,15 @@ class MusicPlayer extends Component {
                 </div>
                 <div className ='row mx-0 '>
                         <Layout />
-                    <div className ='col mx-0 '>
+                    <div className ='col mx-0 pl-0'>
                         <Seeker 
                             onSubmit = {this.handleSubmit} 
                             value = {this.state.wantedWord}
                             onChange = {this.handleChange}
                         />
-                        {list}
-                        <div>Results </div>
+                        
+                        <div className='row mx-0 p-0'>{list} </div>
+                        
                         <div>MusicMediaPlayer</div>
                     </div>
                 </div>

@@ -1,0 +1,19 @@
+#albumContainer{
+    background-color: #ffffff;
+    width: 18rem;
+    display:block;
+    margin: auto;
+    text-align: center;
+    border:rgba(125, 0, 0, 0.8);
+    border: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+#album{
+    padding: .5rem;
+    transition: all .3s ease;
+    cursor: pointer;
+    display:relative;
+    z-index:100;
+}

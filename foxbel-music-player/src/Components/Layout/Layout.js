@@ -24,7 +24,6 @@ class layout extends Component {
                 <SideDrawer 
                     open={this.state.showSideDrawer} 
                     closed={this.sideDrawerCloseHandler}/>
-
             </Aux>
             
         );
