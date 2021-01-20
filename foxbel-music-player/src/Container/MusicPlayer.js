@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
-import SideDrawer from '../Components/SideDrawer/SideDrawer';
+import Layout from '../Components/Layout/Layout';
 import Seeker from '../Components/Seeker/Seeker';
+import ids from './MusicPlayer.module.css';
 import axios from 'axios';
 
 class MusicPlayer extends Component {
@@ -8,7 +9,7 @@ class MusicPlayer extends Component {
         super(props);
         this.state = {
             wantedWord: '',
-            
+            wantedMusicResponse: []
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -20,7 +21,9 @@ class MusicPlayer extends Component {
         let wantedLink = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=album:"${this.state.wantedWord}"`;
         axios.get(wantedLink)
             .then(response => {
-                console.log(response);
+                // console.log(response);
+                this.setState({wantedMusicResponse: response.data.data});
+                // console.log(this.state.wantedMusicResponse);
             });
         event.preventDefault();
     }
@@ -31,18 +34,26 @@ class MusicPlayer extends Component {
     }
 
     render(){
-        // <Seeker clicked = {this.getData(props.value)}/>
+
+
+        const list = this.state.wantedMusicResponse.map(
+            song => {
+                return <div> { song.title } </div>
+            }
+        );
+
         return (
-            <div className='row mx-0'>
-                <SideDrawer />
+            
+            <div id={ids.Contenedor}className ='row mx-0 '>
+                <Layout />
                 <div>
                     <Seeker 
-                        onSubmit={this.handleSubmit} 
-                        value={this.state.wantedWord}
-                        onChange={this.handleChange}
+                        onSubmit = {this.handleSubmit} 
+                        value = {this.state.wantedWord}
+                        onChange = {this.handleChange}
                     />
-                    <div>Results</div>
-                    
+                    {list}
+                    <div>Results </div>
                     <div>MusicMediaPlayer</div>
                 </div>
             </div>

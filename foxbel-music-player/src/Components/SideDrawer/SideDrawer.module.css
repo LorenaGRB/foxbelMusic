@@ -1,8 +1,22 @@
-#sidebar-wrapper {
-    min-height: 100vh;
-    margin-left: -15rem;
-    -webkit-transition: margin .25s ease-out;
-    -moz-transition: margin .25s ease-out;
-    -o-transition: margin .25s ease-out;
-    transition: margin .25s ease-out;
+#SideDrawer{
+    display: none;
+    transition-property:  transform 0.3s ease-out;
+
+}
+
+@media (min-width:500px) {
+    #SideDrawer {
+        display:block;
+        min-height: 100vh;
+        background-color:rgb(128, 0, 0);
+        max-width:70%;
+        z-index:200;
+    }
+}
+
+.Open{
+    transform: translateX(0);
+}
+.Close{
+    transform: translateX(-100%);
 }

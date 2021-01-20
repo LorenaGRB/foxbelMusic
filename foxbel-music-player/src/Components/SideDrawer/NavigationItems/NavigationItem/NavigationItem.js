@@ -1,8 +1,9 @@
 import React from 'react';
+import ids from './Navigation.module.css';
 
 const navigationItem= (props) => (
     <li>
-        <a className="nav-link " role ='button' style={{color:"rgb(224, 209, 209,0.8)"}}>
+        <a id={ids.link} className="nav-link ml-2 " role ='button'>
             {props.children}
         </a>
     </li>

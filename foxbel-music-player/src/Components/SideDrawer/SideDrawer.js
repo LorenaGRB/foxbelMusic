@@ -1,12 +1,15 @@
 import React from 'react';
 import NavigationItems from './NavigationItems/NavigationItems';
-import classes from './../SideDrawer/SideDrawer.module.css';
+import ids from './../SideDrawer/SideDrawer.module.css';
 
-const SideDrawer = () => (
-    <div  className='sidebar-header' style={{backgroundColor:"rgb(128, 0, 0)"}} >
-        <NavigationItems className='sidebar-header'/>
-    </div>
+const sideDrawer = () =>{
     
-)
+        return (
+        <div  id={ids.SideDrawer} >
+            <NavigationItems />
+        </div>
+        );
+    
+}
 
-export default SideDrawer;
+export default sideDrawer;
