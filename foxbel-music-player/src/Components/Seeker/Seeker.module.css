@@ -1,0 +1,24 @@
+#Search{
+    width:100%;
+    background-color: transparent;
+    color:white;
+    border-color: white;
+}
+#Btn{
+    background-color: transparent;
+    color:white;
+    border-color: rgba(248, 110, 110, 0.582);
+}
+
+
+
+@media ( max-width:500px ){
+    #Search{
+        color:white;
+        border-color: rgba(68, 32, 32, 0.534);
+    } 
+    #Btn{
+        color:white;
+        border-color: rgba(68, 32, 32, 0.534);
+    }
+}

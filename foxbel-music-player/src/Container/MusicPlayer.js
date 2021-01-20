@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
 import Layout from '../Components/Layout/Layout';
 import Seeker from '../Components/Seeker/Seeker';
-import ids from './MusicPlayer.module.css';
 import axios from 'axios';
+import Aux from './../Hoc/Auxiliary';
+import foxbelLogo from './../Assets/Imagenes/foxbel-music-white.png';
 
 class MusicPlayer extends Component {
     constructor(props){
@@ -43,20 +44,25 @@ class MusicPlayer extends Component {
         );
 
         return (
-            
-            <div id={ids.Contenedor}className ='row mx-0 '>
-                <Layout />
+            <Aux>
                 <div>
-                    <Seeker 
-                        onSubmit = {this.handleSubmit} 
-                        value = {this.state.wantedWord}
-                        onChange = {this.handleChange}
-                    />
-                    {list}
-                    <div>Results </div>
-                    <div>MusicMediaPlayer</div>
+                <img src={foxbelLogo} className='col-md pt-3 pl-3' style={{maxWidth:'450px', display:'block',margin:'auto'}}/>
                 </div>
-            </div>
+                <div className ='row mx-0 '>
+                        <Layout />
+                    <div className ='col mx-0 '>
+                        <Seeker 
+                            onSubmit = {this.handleSubmit} 
+                            value = {this.state.wantedWord}
+                            onChange = {this.handleChange}
+                        />
+                        {list}
+                        <div>Results </div>
+                        <div>MusicMediaPlayer</div>
+                    </div>
+                </div>
+            </Aux>
+            
         )
     }
 }

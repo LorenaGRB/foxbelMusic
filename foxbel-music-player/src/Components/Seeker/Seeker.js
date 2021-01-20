@@ -1,18 +1,22 @@
 import React from 'react';
+import ids from './Seeker.module.css';
 
 
 const seeker = (props) => {
     return (
-        <form className='row m-0 p-2' onSubmit= { props.onSubmit }>
+        <form  className='row m-0 p-2' onSubmit= { props.onSubmit }>
             <input 
-                className="form-control col r-3" 
+                id={ids.Search}
+                className="form-control col r-3 " 
                 type="search" 
-                placeholder="Search" 
+                placeholder="Look for a song or Album" 
                 aria-label="Search" 
                 value={ props.value } 
                 onChange={props.onChange}
             />
-            <button className="btn btn-outline-danger" type="submit">Search</button>
+            <button id={ids.Btn} className="btn btn-default col-xxl" type="submit"> 
+                Search
+            </button>
         </form>
     )
 }

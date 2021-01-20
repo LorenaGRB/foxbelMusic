@@ -1,8 +1,0 @@
-.ToogleBtn{
-    display:none;
-}
-@media (min-width:500px) {
-    .ToogleBtn {
-        display: none;
-    }
-}
