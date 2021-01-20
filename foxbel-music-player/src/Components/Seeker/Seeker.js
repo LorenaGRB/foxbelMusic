@@ -3,7 +3,7 @@ import React from 'react';
 
 const seeker = (props) => {
     return (
-        <form className='row m-0' onSubmit= {props.onSubmit}>
+        <form className='row m-0 p-2' onSubmit= {props.onSubmit}>
             <input 
                 className="form-control col" 
                 type="search" 

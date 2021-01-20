@@ -1,13 +1,14 @@
 import React,{Component} from 'react';
 import SideDrawer from '../Components/SideDrawer/SideDrawer';
 import Seeker from '../Components/Seeker/Seeker';
+import axios from 'axios';
 
 class MusicPlayer extends Component {
     constructor(props){
         super(props);
         this.state = {
             wantedWord: '',
-            wantedLink: ''
+            
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -16,7 +17,11 @@ class MusicPlayer extends Component {
 
     handleSubmit(event){
         // console.log(this.state.wantedWord);
-        
+        let wantedLink = `https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=album:"${this.state.wantedWord}"`;
+        axios.get(wantedLink)
+            .then(response => {
+                console.log(response);
+            });
         event.preventDefault();
     }
 
